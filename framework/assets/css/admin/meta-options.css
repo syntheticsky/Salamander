@@ -1,0 +1,100 @@
+.aside-tabs {
+	border: none;
+	background: none;
+}
+
+.options-sidebar {
+	float: left;
+}
+
+.options-content {
+	float: left;
+	width: 90%; /* fallback if needed */
+  width: calc(100% - 180px);
+}
+
+.ui-tabs-vertical {
+
+}
+
+.ui-tabs-vertical .ui-tabs-nav {
+	padding: .2em .1em .2em .2em;
+	width: 175px;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li {
+	clear: left;
+	width: 100%;
+	border-bottom-width: 1px !important;
+	border-right-width: 0 !important;
+	margin: 0 -1px .2em 0;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li a {
+	display:block;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+	padding-bottom: 0;
+	padding-right: .1em;
+	border-right-width: 1px;
+	border-right-width: 1px;
+}
+
+.ui-tabs-vertical .ui-tabs-panel {
+
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+	float: none;
+}
+
+.ui-tabs-vertical .ui-tabs-panel {
+
+}
+
+.ui-widget-content {
+ 	border: none;
+ 	background: none;
+}
+
+li.ui-state-default, .ui-widget-content li.ui-state-default, .ui-widget-header li.ui-state-default {
+ 	border: none;
+	background: none;
+	font-weight: bold;
+	color: #1c94c4;
+}
+
+.layout-link {
+	margin: 0 20px;
+	position: relative;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.selector-tick {
+	display: none;
+	position: absolute;
+}
+
+.selector-tick.show {
+	display: inline;
+}
+
+
+#layout-select .ui-selecting {
+	background: #FECA40;
+}
+
+#layout-select .ui-selected {
+	background: #F39814;
+	color: white;
+}
+
+#layout-select li {
+	margin: 15px;
+	padding: 1px;
+	float: left;
+	font-size: 4em;
+	text-align: center;
+}
