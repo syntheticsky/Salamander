@@ -3036,13 +3036,14 @@ class SalamanderInit
 			'default' => 'Large',
 			'type' => 'select',
 			'options' => array(
-						'large' => 'Large',
-						'medium' => 'Medium',
-						'large_alternate' => 'Large Alternate',
-						'medium_alternate' => 'Medium Alternate',
-						'grid' => 'Grid',
-						'timeline' => 'Timeline'
-					));
+				'large' => 'Large',
+				'medium' => 'Medium',
+				'large_alternate' => 'Large Alternate',
+				'medium_alternate' => 'Medium Alternate',
+				'grid' => 'Grid',
+				'timeline' => 'Timeline'
+			)
+		);
 
 		$this->options[] = array(
 			'name' => 'Pagination Type',
@@ -3051,9 +3052,10 @@ class SalamanderInit
 			'default' => 'pagination',
 			'type' => 'select',
 			'options' => array(
-						'pagination' => 'Pagination',
-						'infinite' => 'Infinite Scroll',
-					));
+				'pagination' => 'Pagination',
+				'infinite' => 'Infinite Scroll',
+			)
+		);
 
 		$this->options[] = array(
 			'name' => 'Blog Page Title Bar Title',
@@ -3075,12 +3077,14 @@ class SalamanderInit
 			'name' => 'Sidebar Position',
 			'desc' => 'Blog listings page sidebar position',
 			'id' => 'blog_sidebar_position',
-			'default' => 'Right',
+			'default' => 'right',
 			'type' => 'select',
 			'options' => array(
-						'right' => 'Right',
-						'left' => 'Left',
-					));
+				'right' => __('Right', 'salamander'),
+				'left' => __('Left', 'salamander'),
+				'both' => __('Two sidebars', 'salamander'),
+			)
+		);
 
 		$this->options[] = array(
 			'name' => 'Disable Previous/Next Pagination',

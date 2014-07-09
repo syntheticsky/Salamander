@@ -50,6 +50,22 @@ class Salamander
 					{
 						return (self::getData($args[1]) == 'fluid') ? $args[2] . '-fluid': $args[2];
 					}
+					if ($args[1] == 'blog_sidebar_position')
+					{
+						if ($args[2] == 'sidebar')
+						{
+							$cols = 'col-xs-3 col-sm-3 col-md-3 col-lg-3';
+						}
+						if (self::getData($args[1]) == 'both' && $args[2] == 'main-content')
+						{
+							$cols = 'col-xs-6 col-sm-6 col-md-6 col-lg-6';
+						}
+						elseif ((self::getData($args[1]) == 'right' || self::getData($args[1]) == 'left') && $args[2] == 'main-content') {
+							$cols = 'col-xs-9 col-sm-9 col-md-9 col-lg-9';
+						}
+
+						return $args[2] . ' ' . $cols;
+					}
 					break;
 				default:
 					return self::getData($method);
