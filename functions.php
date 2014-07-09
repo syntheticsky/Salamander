@@ -14,6 +14,7 @@ function salamanderAutoload($class_name) {
         'framework',
         // 'framework' . DIRECTORY_SEPARATOR . 'Views',
         'framework' . DIRECTORY_SEPARATOR . 'libs',
+        'framework' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'kdMultipleFeaturedImages',
     );
 
     //for each directory
@@ -64,4 +65,56 @@ if (!is_admin())
 // $data = $salamander->getData();
 // print_r($data);
 // print '<pre>';
+}
+
+if(Salamander::getData('blog_layout') == 'Large Alternate' || Salamander::getData('blog_layout') == 'Medium Alternate') {
+    add_theme_support('post-formats', array('gallery', 'link', 'image', 'quote', 'video', 'audio', 'chat'));
+}
+
+if(class_exists('kdMultipleFeaturedImages')  && !Salamander::getData('legacy_posts_slideshow')) {
+        $i = 2;
+
+        while($i <= Salamander::getData('posts_slideshow_number')) {
+            $args = array(
+                    'id' => 'featured-image-'.$i,
+                    'post_type' => 'post',      // Set this to post or page
+                    'labels' => array(
+                        'name'      => 'Featured image '.$i,
+                        'set'       => 'Set featured image '.$i,
+                        'remove'    => 'Remove featured image '.$i,
+                        'use'       => 'Use as featured image '.$i,
+                    )
+            );
+
+            new kdMultipleFeaturedImages( $args );
+
+            $args = array(
+                    'id' => 'featured-image-'.$i,
+                    'post_type' => 'page',      // Set this to post or page
+                    'labels' => array(
+                        'name'      => 'Featured image '.$i,
+                        'set'       => 'Set featured image '.$i,
+                        'remove'    => 'Remove featured image '.$i,
+                        'use'       => 'Use as featured image '.$i,
+                    )
+            );
+
+            new kdMultipleFeaturedImages( $args );
+
+            $args = array(
+                    'id' => 'featured-image-'.$i,
+                    'post_type' => 'avada_portfolio',      // Set this to post or page
+                    'labels' => array(
+                        'name'      => 'Featured image '.$i,
+                        'set'       => 'Set featured image '.$i,
+                        'remove'    => 'Remove featured image '.$i,
+                        'use'       => 'Use as featured image '.$i,
+                    )
+            );
+
+            new kdMultipleFeaturedImages( $args );
+
+            $i++;
+        }
+
 }

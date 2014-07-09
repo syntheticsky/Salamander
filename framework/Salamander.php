@@ -45,7 +45,12 @@ class Salamander
 				case 'layout_type':
 					return (self::getData($method) == 'fluid') ? '-fluid': '';
 					break;
-
+				case 'classes':
+					if ($args[1] == 'layout_type')
+					{
+						return (self::getData($args[1]) == 'fluid') ? $args[2] . '-fluid': $args[2];
+					}
+					break;
 				default:
 					return self::getData($method);
 					break;

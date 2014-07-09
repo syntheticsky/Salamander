@@ -103,7 +103,7 @@ class ShortCodes
 	}
 
 	public function addPlugin( $plugin_array ) {
-	   $plugin_array['ssc_button'] = ASSETS_DIR . 'js' . DS . 'shortcodes.js';
+	   $plugin_array['ssc_button'] = ASSETS_DIR . 'js/shortcodes.js';
 	   return $plugin_array;
 	}
 }

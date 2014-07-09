@@ -1,11 +1,7 @@
 <?php get_header(); ?>
 <?php print Salamander::getHtml('header'); ?>
 	<?php
-	$layout_type = $content_css = $sidebar_css = '';
-	if(Salamander::getData('layout_type') == 'fluid')
-	{
-		$layout_type = '-fluid';
-	}
+	$content_css = $sidebar_css = '';
 
 	// if(class_exists('Woocommerce')) {
 	// 	if(is_cart() || is_checkout() || is_account_page() || is_page(get_option('woocommerce_thanks_page_id'))) {
@@ -14,8 +10,8 @@
 	// 	}
 	// }
 	?>
-	<div class="container<?php print $layout_type; ?>">
-		<div class="row<?php print $layout_type; ?>">
+	<div class="<?php print Salamander::classes('data', 'layout_type', 'container'); ?>">
+		<div class="<?php print Salamander::classes('data', 'layout_type', 'row'); ?>">
 		 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<?php if(have_posts()): the_post(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

@@ -3,8 +3,8 @@
 <?php
 	$content_css = $sidebar_css = '';
 ?>
-	<div class="container<?php print Salamander::layout_type('data'); ?>">
-		 	<div class="row<?php print Salamander::layout_type('data'); ?>">
+	<div class="<?php print Salamander::classes('data', 'layout_type', 'container'); ?>">
+		<div class="<?php print Salamander::classes('data', 'layout_type', 'row'); ?>">
 		 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<?php if(Salamander::getData('blog_layout') == 'Timeline'): ?>
 		<div class="timeline-icon"><i class="icon-comments-alt"></i></div>
@@ -72,12 +72,12 @@
 				</div>
 				<?php endif; ?>
 				<?php
-				if(Salamander::getData('featured_images')):
-				if(Salamander::getData('legacy_posts_slideshow')) {
-					get_template_part('legacy-slideshow');
-				} else {
-					get_template_part('new-slideshow');
-				}
+				if (Salamander::getData('featured_images')):
+					if (Salamander::getData('legacy_posts_slideshow')) :
+						get_template_part('legacy-slideshow');
+					else :
+						get_template_part('new-slideshow');
+					endif;
 				endif;
 				?>
 				<div class="post-content-container">

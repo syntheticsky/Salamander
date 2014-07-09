@@ -2,33 +2,31 @@
 <?php print Salamander::getHtml('header'); ?>
 	<?php
 
-	$layout_type = $content_css = $sidebar_css = '';
-	if(Salamander::getData('layout_type') == 'fluid')
-	{
-		$layout_type = '-fluid';
-	}
+	$content_css = $sidebar_css = '';
 
 	if(get_post_meta($post->ID, 'sl_meta_full_width', true) == true) {
 		$content_css = 'width:100%';
 		$sidebar_css = 'display:none';
 	}
-	elseif(get_post_meta($post->ID, 'sl_meta_sidebar_position', true) == 'left') {
+	elseif (get_post_meta($post->ID, 'sl_meta_sidebar_position', true) == 'left') {
 		$content_css = 'float:right;';
 		$sidebar_css = 'float:left;';
-	} elseif(get_post_meta($post->ID, 'sl_meta_sidebar_position', true) == 'right') {
+	} elseif (get_post_meta($post->ID, 'sl_meta_sidebar_position', true) == 'right') {
 		$content_css = 'float:left;';
 		$sidebar_css = 'float:right;';
-	} elseif(get_post_meta($post->ID, 'sl_meta_sidebar_position', true) == 'default') {
+	} elseif (get_post_meta($post->ID, 'sl_meta_sidebar_position', true) == 'default') {
 		if(Salamander::getData('default_sidebar_pos') == 'Left') {
 			$content_css = 'float:right;';
 			$sidebar_css = 'float:left;';
-		} elseif(Salamander::getData('default_sidebar_pos') == 'Right') {
+		} elseif (Salamander::getData('default_sidebar_pos') == 'Right') {
 			$content_css = 'float:left;';
 			$sidebar_css = 'float:right;';
 		}
 	}
 	?>
-	<div class="container<?php print $layout_type; ?>" style="<?php echo $content_css; ?>">
+	<div class="<?php print Salamander::classes('data', 'layout_type', 'container'); ?>">
+		<div class="<?php print Salamander::classes('data', 'layout_type', 'row'); ?>">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<?php wp_reset_query(); ?>
 		<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 		<?php query_posts($query_string.'&paged='.$paged); ?>
@@ -334,6 +332,8 @@
 			<?php endif; ?>
 		</div>
 		<?php endif; ?>
+			</div>
+		</div>
 	</div>
 	<div id="sidebar" style="<?php echo $sidebar_css; ?>">
 	<?php generated_dynamic_sidebar(); ?>
