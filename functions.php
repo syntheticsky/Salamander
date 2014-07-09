@@ -14,6 +14,7 @@ function salamanderAutoload($class_name) {
         'framework',
         // 'framework' . DIRECTORY_SEPARATOR . 'Views',
         'framework' . DIRECTORY_SEPARATOR . 'libs',
+        'framework' . DIRECTORY_SEPARATOR . 'widgets',
         'framework' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'kdMultipleFeaturedImages',
     );
 
@@ -72,49 +73,61 @@ if(Salamander::getData('blog_layout') == 'Large Alternate' || Salamander::getDat
 }
 
 if(class_exists('kdMultipleFeaturedImages')  && !Salamander::getData('legacy_posts_slideshow')) {
-        $i = 2;
+  $i = 2;
+  while($i <= Salamander::getData('posts_slideshow_number')) {
+    $args = array(
+      'id' => 'featured-image-'.$i,
+      'post_type' => 'post',      // Set this to post or page
+      'labels' => array(
+        'name'=> 'Featured image '.$i,
+        'set' => 'Set featured image '.$i,
+        'remove' => 'Remove featured image '.$i,
+        'use' => 'Use as featured image '.$i,
+      )
+    );
 
-        while($i <= Salamander::getData('posts_slideshow_number')) {
-            $args = array(
-                    'id' => 'featured-image-'.$i,
-                    'post_type' => 'post',      // Set this to post or page
-                    'labels' => array(
-                        'name'      => 'Featured image '.$i,
-                        'set'       => 'Set featured image '.$i,
-                        'remove'    => 'Remove featured image '.$i,
-                        'use'       => 'Use as featured image '.$i,
-                    )
-            );
+    new kdMultipleFeaturedImages($args);
 
-            new kdMultipleFeaturedImages( $args );
+    $args = array(
+      'id' => 'featured-image-'.$i,
+      'post_type' => 'page',      // Set this to post or page
+      'labels' => array(
+        'name' => 'Featured image '.$i,
+        'set' => 'Set featured image '.$i,
+        'remove' => 'Remove featured image '.$i,
+        'use' => 'Use as featured image '.$i,
+      )
+    );
 
-            $args = array(
-                    'id' => 'featured-image-'.$i,
-                    'post_type' => 'page',      // Set this to post or page
-                    'labels' => array(
-                        'name'      => 'Featured image '.$i,
-                        'set'       => 'Set featured image '.$i,
-                        'remove'    => 'Remove featured image '.$i,
-                        'use'       => 'Use as featured image '.$i,
-                    )
-            );
+    new kdMultipleFeaturedImages($args);
 
-            new kdMultipleFeaturedImages( $args );
+    $args = array(
+      'id' => 'featured-image-'.$i,
+      'post_type' => 'avada_portfolio',      // Set this to post or page
+      'labels' => array(
+        'name' => 'Featured image '.$i,
+        'set' => 'Set featured image '.$i,
+        'remove' => 'Remove featured image '.$i,
+        'use' => 'Use as featured image '.$i,
+      )
+    );
 
-            $args = array(
-                    'id' => 'featured-image-'.$i,
-                    'post_type' => 'avada_portfolio',      // Set this to post or page
-                    'labels' => array(
-                        'name'      => 'Featured image '.$i,
-                        'set'       => 'Set featured image '.$i,
-                        'remove'    => 'Remove featured image '.$i,
-                        'use'       => 'Use as featured image '.$i,
-                    )
-            );
+    new kdMultipleFeaturedImages($args);
 
-            new kdMultipleFeaturedImages( $args );
-
-            $i++;
-        }
-
+    $i++;
+  }
 }
+
+// Add post thumbnail functionality
+add_theme_support('post-thumbnails');
+add_image_size('blog-large', 669, 272, true);
+add_image_size('blog-medium', 320, 202, true);
+add_image_size('tabs-img', 52, 50, true);
+add_image_size('related-img', 180, 138, true);
+add_image_size('portfolio-one', 540, 272, true);
+add_image_size('portfolio-two', 460, 295, true);
+add_image_size('portfolio-three', 300, 214, true);
+add_image_size('portfolio-four', 220, 161, true);
+add_image_size('portfolio-full', 940, 400, true);
+add_image_size('recent-posts', 700, 441, true);
+add_image_size('recent-works-thumbnail', 66, 66, true);

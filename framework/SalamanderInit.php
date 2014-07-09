@@ -22,6 +22,7 @@ class SalamanderInit
 		$this->helper = Helper::getInstance();
 		$this->setOptions();
 		$this->optionsMachine = $this->helper->optionsMachine($this->options);
+		new Widgets();
 	}
 
 	public static function getInstance()

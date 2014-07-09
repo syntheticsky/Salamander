@@ -4,7 +4,7 @@
  * Class to implement multiple sidebars functionality.
  */
 
-class multipleSidebars
+class MultipleSidebars
 {
 	private $helper;
 	private $sidebars;

@@ -27,7 +27,7 @@ class Salamander
     $this->currentPageID = $this->getCurrentPageId();
     //Init multipleSidebars
     //Register Custom Sidebars (widget zones)
-    $this->multiSidebars = multipleSidebars::getInstance();
+    $this->multiSidebars = MultipleSidebars::getInstance();
     //Add metaboxes to posts and pages
     $this->metaBoxes = new Metaboxes();
     //Init Shortcodes
