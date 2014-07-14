@@ -10,5 +10,6 @@ class Widgets
   function loadWidgets()
   {
     register_widget('TabsWidget');
+    register_widget('TweetsWidget');
   }
 }

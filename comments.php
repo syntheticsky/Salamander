@@ -18,7 +18,7 @@
 		<div class="title"><h2><?php comments_number(__('No Comments', 'salamander'), __('One Comment', 'salamander'), '% '.__('Comments', 'salamander'));?></h2><div class="title-sep-container"><div class="title-sep"></div></div></div>
 
 		<ol class="commentlist">
-			<?php wp_list_comments('callback=salamander_comment'); ?>
+			<?php wp_list_comments('callback=SalamanderInit::salamanderComment'); ?>
 		</ol>
 
 		<div class="comments-navigation">

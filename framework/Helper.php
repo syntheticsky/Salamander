@@ -47,7 +47,18 @@ class Helper
 	  return $this->function_get_output('display', $template, $params);
 	}
 
-	static public function optionsMachine($options)
+  public static function stringLimitWords($string, $word_limit)
+  {
+    $words = explode(' ', $string, ($word_limit + 1));
+
+    if(count($words) > $word_limit) {
+      array_pop($words);
+    }
+
+    return implode(' ', $words);
+  }
+
+	public static function optionsMachine($options)
 	{
     $data = self::$themeOptions;
 

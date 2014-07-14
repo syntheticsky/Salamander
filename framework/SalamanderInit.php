@@ -72,6 +72,8 @@ class SalamanderInit
 		define('FRAMEWORK_PATH', TEMPLATEPATH . DS . 'framework' . DS);
 		define('VIEWS_PATH', TEMPLATEPATH . DS . 'framework' . DS . 'Views' . DS);
 		define('VIEWS_DIR', TEMPLATE_DIR . '/framework/Views/');
+    define('WIDGETS_PATH', TEMPLATEPATH . DS . 'framework' . DS . 'widgets' . DS);
+		define('WIDGETS_DIR', TEMPLATE_DIR . '/framework/widgets/');
 		define('ASSETS_PATH', TEMPLATEPATH . DS . 'framework' . DS . 'assets' . DS);
 		define('ASSETS_DIR', TEMPLATE_DIR . '/framework/assets/');
 		define('LIBS_PATH', TEMPLATEPATH . DS . 'framework' . DS . 'libs' . DS);
@@ -523,6 +525,60 @@ class SalamanderInit
     wp_enqueue_script( 'avada' );
     }
 	}
+
+  public function setPostViews() {
+    global $post;
+
+    if('post' == get_post_type() && is_single()) {
+      $postID = $post->ID;
+
+      if(!empty($postID)) {
+        $count_key = 'sl_post_views_count';
+        $count = get_post_meta($postID, $count_key, true);
+
+        if($count == '') {
+          $count = 0;
+          delete_post_meta($postID, $count_key);
+          add_post_meta($postID, $count_key, '0');
+        } else {
+          $count++;
+          update_post_meta($postID, $count_key, $count);
+        }
+      }
+    }
+  }
+
+  public static function salamanderComment($comment, $args, $depth)
+  {
+    $GLOBALS['comment'] = $comment; ?>
+    <?php $add_below = ''; ?>
+    <li <?php comment_class(); ?> id="comment-<?php comment_ID() ?>">
+
+    <div class="the-comment">
+      <div class="avatar">
+        <?php echo get_avatar($comment, 54); ?>
+      </div>
+
+      <div class="comment-box">
+
+        <div class="comment-author meta">
+          <strong><?php echo get_comment_author_link() ?></strong>
+          <?php printf(__('%1$s at %2$s', 'salamander'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__(' - Edit', 'salamander'),'  ','') ?><?php comment_reply_link(array_merge( $args, array('reply_text' => __(' - Reply', 'salamander'), 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+        </div>
+
+        <div class="comment-text">
+          <?php if ($comment->comment_approved == '0') : ?>
+            <em><?php echo __('Your comment is awaiting moderation.', 'Avada') ?></em>
+            <br />
+          <?php endif; ?>
+          <?php comment_text() ?>
+        </div>
+
+      </div>
+
+    </div>
+    <?php
+  }
 
 	public function setOptions()
 	{
