@@ -67,8 +67,7 @@ if (!is_admin())
 // print_r($data);
 // print '<pre>';
 }
-//Add custom post views count
-add_action('wp_head', array($salamander->init, 'setPostViews'));
+
 if(Salamander::getData('blog_layout') == 'Large Alternate' || Salamander::getData('blog_layout') == 'Medium Alternate') {
     add_theme_support('post-formats', array('gallery', 'link', 'image', 'quote', 'video', 'audio', 'chat'));
 }
@@ -118,6 +117,9 @@ if(class_exists('kdMultipleFeaturedImages')  && !Salamander::getData('legacy_pos
     $i++;
   }
 }
+
+//Add custom post views count
+add_action('wp_head', array($salamander->init, 'setPostViews'));
 
 // Add post thumbnail functionality
 add_theme_support('post-thumbnails');
