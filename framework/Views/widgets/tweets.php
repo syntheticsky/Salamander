@@ -1,4 +1,9 @@
-
+<?php
+  print $before_widget;
+  if($instance['title'])
+    print $before_title . $instance['title'] . $after_title;
+?>
+<?php if($twitter && is_array($twitter)) : ?>
 <div class="twitter-box">
   <div class="twitter-holder">
     <div class="b">
@@ -16,7 +21,7 @@
               </p>
               <?php
               $twitterTime = strtotime($tweet->created_at);
-              $timeAgo = $this->ago($twitterTime);
+              $timeAgo = TweetsWidget::ago($twitterTime);
               ?>
               <a href="http://twitter.com/<?php echo $tweet->user->screen_name; ?>/statuses/<?php echo $tweet->id_str; ?>" class="jtwt_date"><?php echo $timeAgo; ?></a>
             </li>
@@ -27,3 +32,5 @@
   </div>
   <span class="arrow"></span>
 </div>
+<?php endif; ?>
+<?php print $after_widget; ?>

@@ -82,7 +82,7 @@ class MultipleSidebars
 		$params = array(
 			'sidebars' => $vars,
 		);
-		print $this->helper->render(VIEWS_PATH . 'admin' . DS . 'sidebarsAdmin.php', $params);
+		print Helper::render(VIEWS_PATH . 'admin' . DS . 'sidebarsAdmin.php', $params);
 		wp_print_scripts(array('sack'));
 	}
 
@@ -225,7 +225,7 @@ class MultipleSidebars
 			'sidebar_replacements' => $vars,
 			'selected_sidebar_replacement' => $selected_sidebar_replacement,
 		);
-		print $this->helper->render(VIEWS_PATH . 'admin' . DS . 'sidebarsEditForm.php', $args);
+		print Helper::render(VIEWS_PATH . 'admin' . DS . 'sidebarsEditForm.php', $args);
 	}
 
 	/**

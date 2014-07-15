@@ -187,7 +187,7 @@
         </div>
         <?php //themefusion_pagination($pages = '', $range = 2); ?>
 			</div>
-			<aside id="sidebar">
+			<aside id="right-sidebar" class="<?php print Salamander::classes('data', 'blog_sidebar_position', 'sidebar')?>">
 				<?php
 				// if(is_home()) {
 				// 	$name = get_post_meta(get_option('page_for_posts'), 'sbg_selected_sidebar_replacement', true);

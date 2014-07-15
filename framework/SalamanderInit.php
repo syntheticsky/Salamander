@@ -70,8 +70,8 @@ class SalamanderInit
 		define('ADMIN_DIR', TEMPLATE_DIR . DS . 'admin' . DS); //??
 		define('FRAMEWORK_DIR', TEMPLATE_DIR . '/framework/');
 		define('FRAMEWORK_PATH', TEMPLATEPATH . DS . 'framework' . DS);
-		define('VIEWS_PATH', TEMPLATEPATH . DS . 'framework' . DS . 'Views' . DS);
-		define('VIEWS_DIR', TEMPLATE_DIR . '/framework/Views/');
+		define('VIEWS_PATH', TEMPLATEPATH . DS . 'framework' . DS . 'views' . DS);
+		define('VIEWS_DIR', TEMPLATE_DIR . '/framework/views/');
     define('WIDGETS_PATH', TEMPLATEPATH . DS . 'framework' . DS . 'widgets' . DS);
 		define('WIDGETS_DIR', TEMPLATE_DIR . '/framework/widgets/');
 		define('ASSETS_PATH', TEMPLATEPATH . DS . 'framework' . DS . 'assets' . DS);
@@ -310,7 +310,7 @@ class SalamanderInit
 			'headerClassesArray' => $classes,
 			'optionsMachine' => $this->optionsMachine,
 		);
-		print $this->helper->render(VIEWS_PATH . 'admin' . DS . 'optionsPage.php', $params);
+		print Helper::render(VIEWS_PATH . 'admin' . DS . 'optionsPage.php', $params);
 	}
 
 	/**

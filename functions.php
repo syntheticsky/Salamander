@@ -12,7 +12,7 @@ function salamanderAutoload($class_name) {
     $directories = array(
         'admin',
         'framework',
-        // 'framework' . DIRECTORY_SEPARATOR . 'Views',
+        // 'framework' . DIRECTORY_SEPARATOR . 'views',
         'framework' . DIRECTORY_SEPARATOR . 'libs',
         'framework' . DIRECTORY_SEPARATOR . 'widgets',
         'framework' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'kdMultipleFeaturedImages',

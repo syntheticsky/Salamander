@@ -2,15 +2,10 @@
 
 class TabsWidget extends WP_Widget {
 
-  private $helper;
-
   public function __construct()
   {
-    $this->helper = Helper::getInstance();
-    $widget_ops = array('classname' => 'sl_tabs', 'description' => 'Popular posts, recent post and comments.');
-
-    $control_ops = array('id_base' => 'sl_tabs-widget');
-
+    $widget_ops = array('classname' => 'sl-tabs', 'description' => __('Popular posts, recent post and comments.', 'salamander'));
+    $control_ops = array('id_base' => 'sl-tabs-widget');
     $this->WP_Widget('sl_tabs-widget', 'Salamander: Tabs', $widget_ops, $control_ops);
   }
 
@@ -27,7 +22,7 @@ class TabsWidget extends WP_Widget {
     $params['show_tags'] = isset($instance['show_tags']) ? 'true' : 'false';
 
     if(!$instance['orderby']) {
-      $instance['orderby'] = 'Highest Comments';
+      $instance['orderby'] = 'comments';
     }
 
     if($instance['orderby'] == 'comments') {
@@ -42,7 +37,7 @@ class TabsWidget extends WP_Widget {
     $params['the_comments'] = $wpdb->get_results($recent_comments);
 
 
-    print $this->helper->render(VIEWS_PATH . 'widgets' . DS . 'tabs.php', $params);
+    print Helper::render(VIEWS_PATH . 'widgets' . DS . 'tabs.php', $params);
   }
 
   function update($new_instance, $old_instance)
@@ -73,23 +68,9 @@ class TabsWidget extends WP_Widget {
       'show_tags' => 'on',
       'orderby' => 'comments',
     );
-    $params = wp_parse_args((array) $instance, $defaults);
-    $params['field_id_order'] = $this->get_field_id('orderby');
-    $params['field_name_order'] = $this->get_field_name('orderby');
-    $params['field_id_posts'] = $this->get_field_id('posts');
-    $params['field_name_posts'] = $this->get_field_name('posts');
-    $params['field_id_tags'] = $this->get_field_id('tags');
-    $params['field_name_tags'] = $this->get_field_name('tags');
-    $params['field_id_comments'] = $this->get_field_id('comments');
-    $params['field_name_comments'] = $this->get_field_name('comments');
-    $params['field_id_show_popular'] = $this->get_field_id('show_popular_posts');
-    $params['field_name_show_popular'] = $this->get_field_name('show_popular_posts');
-    $params['field_id_show_recent'] = $this->get_field_id('show_recent_posts');
-    $params['field_name_show_recent'] = $this->get_field_name('show_recent_posts');
-    $params['field_id_show_comments'] = $this->get_field_id('show_comments');
-    $params['field_name_show_comments'] = $this->get_field_name('show_comments');
+    $params['instance'] = wp_parse_args((array) $instance, $defaults);
+    $params['widget'] = $this;
 
-
-    print $this->helper->render(VIEWS_PATH . 'widgets' . DS . 'tabs-form.php', $params);
+    print Helper::render(VIEWS_PATH . 'widgets' . DS . 'tabs-form.php', $params);
   }
 }

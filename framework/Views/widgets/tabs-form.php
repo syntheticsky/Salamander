@@ -1,34 +1,31 @@
-<?php
-
-?>
 <p>
-  <label for="<?php print $field_id_order; ?>">Popular Posts Order By:</label>
-  <select id="<?php print $field_id_order; ?>" name="<?php print $field_name_order; ?>" class="widefat" style="width:100%;">
-    <option value="comments" <?php if ('comments' == $orderby) print 'selected="selected"'; ?>>Highest Comments</option>
-    <option value="views" <?php if ('views' == $orderby) print 'selected="selected"'; ?>>Highest Views</option>
+  <label for="<?php echo $widget->get_field_id('orderby'); ?>"><?php _e('Popular Posts Order By', 'salamander'); ?>:</label>
+  <select id="<?php echo $widget->get_field_id('orderby'); ?>" name="<?php echo $widget->get_field_name('orderby'); ?>" class="widefat" style="width:100%;">
+    <option value="comments" <?php if ('comments' == $instance['orderby']) echo 'selected="selected"'; ?>><?php _e('Highest Comments', 'salamander'); ?></option>
+    <option value="views" <?php if ('views' == $instance['orderby']) echo 'selected="selected"'; ?>><?php _e('Highest Views', 'salamander'); ?></option>
   </select>
 </p>
 <p>
-  <label for="<?php print $field_id_posts; ?>">Number of popular posts:</label>
-  <input class="widefat" style="width: 30px;" id="<?php print $field_id_posts; ?>" name="<?php print $field_name_posts; ?>" value="<?php echo $posts; ?>" />
+  <label for="<?php echo $widget->get_field_id('posts'); ?>"><?php _e('Number of popular posts', 'salamander'); ?>:</label>
+  <input class="widefat" style="width: 30px;" id="<?php echo $widget->get_field_id('posts'); ?>" name="<?php echo $widget->get_field_name('posts'); ?>" value="<?php echo $instance['posts']; ?>" />
 </p>
 <p>
-  <label for="<?php print $field_id_tags; ?>">Number of recent posts:</label>
-  <input class="widefat" style="width: 30px;" id="<?php print $field_id_tags; ?>" name="<?php print $field_name_tags; ?>" value="<?php echo $tags; ?>" />
+  <label for="<?php echo $widget->get_field_id('tags'); ?>"><?php _e('Number of recent posts', 'salamander'); ?>:</label>
+  <input class="widefat" style="width: 30px;" id="<?php echo $widget->get_field_id('tags'); ?>" name="<?php echo $widget->get_field_name('tags'); ?>" value="<?php echo $instance['tags']; ?>" />
 </p>
 <p>
-  <label for="<?php print $field_id_comments; ?>">Number of comments:</label>
-  <input class="widefat" style="width: 30px;" id="<?php print $field_id_comments; ?>" name="<?php print $field_name_comments; ?>" value="<?php echo $comments; ?>" />
+  <label for="<?php echo $widget->get_field_id('comments'); ?>"><?php _e('Number of comments', 'salamander'); ?>:</label>
+  <input class="widefat" style="width: 30px;" id="<?php echo $widget->get_field_id('comments'); ?>" name="<?php echo $widget->get_field_name('comments'); ?>" value="<?php echo $instance['comments']; ?>" />
 </p>
 <p>
-  <input class="checkbox" type="checkbox" <?php checked($show_popular_posts, 'on'); ?> id="<?php print $field_id_show_popular; ?>" name="<?php print $field_name_show_popular; ?>" />
-  <label for="<?php print $field_id_show_popular; ?>">Show popular posts</label>
+  <input class="checkbox" type="checkbox" <?php checked($instance['show_popular_posts'], 'on'); ?> id="<?php echo $widget->get_field_id('show_popular_posts'); ?>" name="<?php echo $widget->get_field_name('show_popular_posts'); ?>" />
+  <label for="<?php echo $widget->get_field_id('show_popular_posts'); ?>"><?php _e('Show popular posts', 'salamander'); ?></label>
 </p>
 <p>
-  <input class="checkbox" type="checkbox" <?php checked($show_recent_posts, 'on'); ?> id="<?php print $field_id_show_recent; ?>" name="<?php print $field_name_show_recent; ?>" />
-  <label for="<?php print $field_id_show_recent; ?>">Show recent posts</label>
+  <input class="checkbox" type="checkbox" <?php checked($instance['show_recent_posts'], 'on'); ?> id="<?php echo $widget->get_field_id('show_recent_posts'); ?>" name="<?php echo $widget->get_field_name('show_recent_posts'); ?>" />
+  <label for="<?php echo $widget->get_field_id('show_recent_posts'); ?>"><?php _e('Show recent posts', 'salamander'); ?></label>
 </p>
 <p>
-  <input class="checkbox" type="checkbox" <?php checked($show_comments, 'on'); ?> id="<?php print $field_id_show_comments; ?>" name="<?php print $field_name_show_comments; ?>" />
-  <label for="<?php print $field_id_show_comments; ?>">Show comments</label>
+  <input class="checkbox" type="checkbox" <?php checked($instance['show_comments'], 'on'); ?> id="<?php echo $widget->get_field_id('show_comments'); ?>" name="<?php echo $widget->get_field_name('show_comments'); ?>" />
+  <label for="<?php echo $widget->get_field_id('show_comments'); ?>"><?php _e('Show comments', 'salamander'); ?></label>
 </p>

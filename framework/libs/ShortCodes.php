@@ -58,7 +58,7 @@ class ShortCodes
 
 		$mapCounter++;
 
-		return $this->helper->render(VIEWS_PATH . 'shortcodes' . DS . 'map.php', $atts);
+		return Helper::render(VIEWS_PATH . 'shortcodes' . DS . 'map.php', $atts);
 	}
 
 	public function shortcodeVimeo($atts)
@@ -70,7 +70,7 @@ class ShortCodes
 				'height' => 360
 			), $atts);
 
-			return $this->helper->render(VIEWS_PATH . 'shortcodes' . DS . 'vimeo.php', $atts);
+			return Helper::render(VIEWS_PATH . 'shortcodes' . DS . 'vimeo.php', $atts);
 	}
 
 	public function addButton()
@@ -93,7 +93,7 @@ class ShortCodes
 								'map' => 'Google Map',
 							),
     );
-		print $this->helper->render(VIEWS_PATH . 'admin' . DS . 'shortcodesForm.php', $params);
+		print Helper::render(VIEWS_PATH . 'admin' . DS . 'shortcodesForm.php', $params);
 	}
 
 	public function registerButton( $buttons )

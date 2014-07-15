@@ -11,5 +11,6 @@ class Widgets
   {
     register_widget('TabsWidget');
     register_widget('TweetsWidget');
+    register_widget('SocialLinksWidget');
   }
 }

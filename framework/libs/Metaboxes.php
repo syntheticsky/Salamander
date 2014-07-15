@@ -65,8 +65,8 @@ class Metaboxes {
 
 	public function postOptions()
 	{
-		print $this->helper->render(VIEWS_PATH . 'admin' . DS . 'metaboxes' . DS . 'style.php');
-		print $this->helper->render(VIEWS_PATH . 'admin' . DS . 'metaboxes' . DS . 'post_options.php');
+		print Helper::render(VIEWS_PATH . 'admin' . DS . 'metaboxes' . DS . 'style.php');
+		print Helper::render(VIEWS_PATH . 'admin' . DS . 'metaboxes' . DS . 'post_options.php');
 	}
 
 	public function page_options()
