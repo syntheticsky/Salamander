@@ -52,18 +52,18 @@ class Salamander
 					}
 					if ($args[1] == 'blog_sidebar_position')
 					{
-						if ($args[2] == 'sidebar')
+						if ($args[2] == 'left-sidebar')
 						{
-							$cols = 'col-xs-3 col-sm-3 col-md-3 col-lg-3';
+							$cols = (self::getData($args[1]) == 'both') ? 'col-md-4 col-md-pull-8' : 'col-md-4 col-md-pull-12';
 						}
-						if (self::getData($args[1]) == 'both' && $args[2] == 'main-content')
+            if ($args[2] == 'right-sidebar')
+            {
+              $cols = (self::getData($args[1]) == 'both') ? 'col-md-4' : 'col-lg-4 col-md-4';
+            }
+						if ($args[2] == 'main-content')
 						{
-							$cols = 'col-xs-6 col-sm-6 col-md-6 col-lg-6';
+							$cols = (self::getData($args[1]) == 'both') ? 'col-md-8 col-md-push-4' : 'col-md-12 col-md-push-4';
 						}
-						elseif ((self::getData($args[1]) == 'right' || self::getData($args[1]) == 'left') && $args[2] == 'main-content') {
-							$cols = 'col-xs-9 col-sm-9 col-md-9 col-lg-9';
-						}
-
 						return $args[2] . ' ' . $cols;
 					}
 					break;

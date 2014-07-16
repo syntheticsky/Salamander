@@ -5,9 +5,6 @@
 ?>
 	<div class="<?php print Salamander::classes('data', 'layout_type', 'container'); ?>">
 		<div class="<?php print Salamander::classes('data', 'layout_type', 'row'); ?>">
-      <?php if (Salamander::getData('blog_sidebar_position') == 'left' || Salamander::getData('blog_sidebar_position') == 'both') : ?>
-      <aside id="left-sidebar" class="<?php print Salamander::classes('data', 'blog_sidebar_position', 'sidebar')?>"><?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('Blog Left Sidebar')) : endif; ?></aside>
-      <?php endif;?>
       <div class="<?php print Salamander::classes('data', 'blog_sidebar_position', 'main-content')?>">
         <?php if(Salamander::getData('blog_layout') == 'Timeline'): ?>
         <div class="timeline-icon"><i class="icon-comments-alt"></i></div>
@@ -187,21 +184,26 @@
         </div>
         <?php //themefusion_pagination($pages = '', $range = 2); ?>
 			</div>
-			<aside id="right-sidebar" class="<?php print Salamander::classes('data', 'blog_sidebar_position', 'sidebar')?>">
-				<?php
-				// if(is_home()) {
-				// 	$name = get_post_meta(get_option('page_for_posts'), 'sbg_selected_sidebar_replacement', true);
-				// 	if($name) {
-				// 		$salamander->getSidebar();
-				// 		generated_dynamic_sidebar($name[0]);
-				// 	}
-				// }
-				// if(is_front_page()) {
-					if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('Blog Right Sidebar')):
-					endif;
-				// }
-				?>
-			</aside>
+      <?php if (Salamander::getData('blog_sidebar_position') == 'left' || Salamander::getData('blog_sidebar_position') == 'both') : ?>
+        <aside id="left-sidebar" class="<?php print Salamander::classes('data', 'blog_sidebar_position', 'left-sidebar')?>"><?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('Blog Left Sidebar')) : endif; ?></aside>
+      <?php endif;?>
+      <?php if (Salamander::getData('blog_sidebar_position') == 'right' || Salamander::getData('blog_sidebar_position') == 'both') : ?>
+        <aside id="right-sidebar" class="<?php print Salamander::classes('data', 'blog_sidebar_position', 'right-sidebar')?>">
+          <?php
+          // if(is_home()) {
+          // 	$name = get_post_meta(get_option('page_for_posts'), 'sbg_selected_sidebar_replacement', true);
+          // 	if($name) {
+          // 		$salamander->getSidebar();
+          // 		generated_dynamic_sidebar($name[0]);
+          // 	}
+          // }
+          // if(is_front_page()) {
+          if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('Blog Right Sidebar')):
+          endif;
+          // }
+          ?>
+        </aside>
+      <?php endif;?>
 		</div>
 	</div>
 	<?php wp_reset_query(); ?>

@@ -16,16 +16,27 @@ class Ad125x125Widget extends WP_Widget {
     extract($args);
 
     ?>
-    <div class="img-row">
-      <?php
-      $ads = array(1, 2, 3, 4);
-      foreach($ads as $ad_count):
-        if($instance['ad_125_img_'.$ad_count] && $instance['ad_125_link_'.$ad_count]):
-          ?>
-          <div class="img-holder">
-            <span class="hold"><a href="<?php echo $instance['ad_125_link_'.$ad_count]; ?>"><img src="<?php echo $instance['ad_125_img_'.$ad_count]; ?>" alt="" width="123" height="123" /></a></span>
-          </div>
-        <?php endif; endforeach; ?>
+    <div class="ads-125 <?php print Salamander::classes('data', 'layout_type', 'row'); ?>">
+      <div class="col-lg-16 col-md-16">
+    <?php
+    $ads = array(1, 2, 3, 4);
+    $count = 1;
+    ?>
+<?php foreach($ads as $ad) : ?>
+  <?php if($instance['ad_125_img_' . $ad] && $instance['ad_125_link_' . $ad]) : ?>
+    <?php if ($count == 1 || $count == 3) : ?>
+      <div class="<?php print Salamander::classes('data', 'layout_type', 'row'); ?>">
+    <?php endif; ?>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+          <span class="hold"><a href="<?php echo $instance['ad_125_link_' . $ad]; ?>"><img src="<?php echo $instance['ad_125_img_' . $ad]; ?>" alt="" width="123" height="123" /></a></span>
+        </div>
+    <?php if ($count == 2 || $count == 4) : ?>
+      </div>
+    <?php endif; ?>
+  <?php endif; ?>
+  <?php $count++; ?>
+<?php endforeach; ?>
+      </div>
     </div>
   <?php
   }
